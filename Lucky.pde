@@ -121,27 +121,92 @@ int compute (int n){
 void draw(){
 };
 
-void display (int n){
+void display (int n, int r, int l){
+  if(n<=100){
+   if(n==2){
+   fill(0,100,255);
+   rect(0,0,width/2,height);
+   fill(0);
+   textSize(32);
+   text("1",width/4,height/2);
+   fill(255);
+   rect(width/2,0,width/2,height);
+   fill(0);
+   text("2",width/4+width/2,height/2);
+   }
+   if(n>=3){
+   background(0);
+   r=0;
+   l=0;
+   double u = sqrt(n);
+   int x;
+   if (n/u==u){
+     x = (int)u;
+   }else{
+     x = (int)u+1;
+   }
+   size(700,700);
+   int w = width/x;
+   int h = height/x;
+   int c = 1;
+   int d = 0;
+   for (int i=0;i<x;i++){
+     for (int j=0;j<x;j++){
+       if(c<=n){
+         d++;
+         if(Verificar_numero(c)==true){
+           fill(0,100,255);
+           rect(j*w,i*h,w,h);
+           fill(0);
+           textSize(20);
+           text(d,(j*w),(i+1)*h);
+         }else{
+           fill(255);
+           rect(j*w,i*h,w,h);
+           fill(0);
+           textSize(20);
+           text(d,(j*w),(i+1)*h);
+         }
+         c++;
+       }
+     }
+   }
+  }
+  }else{
   background(255);
   int q = n;
   double u = sqrt(q);
-  int x = (int)u+1;
-  size(700,700);
-  int w = width/x;
-  int h = height/x;
+  int x;
+  if (q/u==u){
+     x = (int)u;
+  }else{
+     x = (int)u+1;
+  }
+  int w = 70;
   int c = 1;
+  int d = 0;
   for (int i=0;i<x;i++){
     for (int j=0;j<x;j++){
-      if(c<=q){     
+      stroke(0);
+      if(c<=q){
+        d++;
         if(Verificar_numero(c)==true){
-          fill(0,100,0);
-          rect(j*w,i*h,w,h);
+          fill(10,200,200);
+          ellipse(j*w+r+35,i*w+l+35,w,w);
+          fill(0,0,250);
+          textSize(20);
+          text(d,(j*w)+r+10,(i+1)*w+l-25);
         }else{
-          fill(100000);
-          rect(j*w,i*h,w,h);
+          fill(255);
+          ellipse(j*w+r+35,i*w+l+35,w,w);
+          fill(0,0,250);
+          textSize(20);
+          text(d,(j*w)+r+10,(i+1)*w+l-25);
         }
         c++;
       }
     }
   }
+}
+}
 }
