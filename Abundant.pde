@@ -96,10 +96,17 @@ class Abundant extends Sequence {
     stroke(0);
     int q = n;
     int[]e = Abundant_numbers(q);
-  size(700,700);
-  for (int k=q-1;k>=0;k--){
-    fill(map(e[k],0,e[q-1],0,255));
-    ellipse(width/2,height/2,map(e[k],0,e[q-1],0,width),map(e[k],0,e[q-1],0,height));
+    for (int k=q-1; k>=0; k--) {
+      if(d>=0){
+        fill(255,255,map(e[k], 12, e[q-1], 0, 255));
+        ellipse(width/2, height/2,map(e[k], 0, e[q-1], 0, width), map(e[k], 0, e[q-1], 0, height));
+      }else{
+        fill(0,map(e[k], 0, e[q-1], 0, 255),0);
+        rect(width/2, height/2,map(e[k], 0, e[q-1], 0, width/2), map(e[k], 0, e[q-1], 0, height/2));
+        rect(width/2, height/2,-map(e[k], 0, e[q-1], 0, width/2), -map(e[k], 0, e[q-1], 0, height/2));
+        rect(width/2, height/2,map(e[k], 0, e[q-1], 0, width/2), -map(e[k], 0, e[q-1], 0, height/2));
+        rect(width/2, height/2,-map(e[k], 0, e[q-1], 0, width/2), map(e[k], 0, e[q-1], 0, height/2));
+      }
     }
   }
 }
